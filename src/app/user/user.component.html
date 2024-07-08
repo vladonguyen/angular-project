@@ -1,6 +1,7 @@
 <div>
-    <button>
-        <img [src]="imagePath" 
+    <button (click)="onSelectedUser()">
+        <img 
+        [src]="imagePath" 
         [alt]="selectedUser.name" />
         <span>
             {{selectedUser.name}}
