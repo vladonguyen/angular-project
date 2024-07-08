@@ -11,13 +11,15 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 
 export class UserComponent {
-selectedUser = DUMMY_USERS[randomIndex];
+  selectedUser = DUMMY_USERS[randomIndex];
 
-get imagePath(){
-  return 'assets/users/' + this.selectedUser.avatar
-}
+  get imagePath() {
+    return 'assets/users/' + this.selectedUser.avatar
+  }
 
-onSelectedUser(){
-  console.log('Clicked!')
-}
+  onSelectedUser() {
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+    this.selectedUser = DUMMY_USERS[randomIndex];
+  }
 }
