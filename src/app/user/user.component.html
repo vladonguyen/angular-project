@@ -1,10 +1,10 @@
 <div>
     <button (click)="onSelectedUser()">
         <img 
-        [src]="imagePath" 
-        [alt]="name" />
+        [src]="imagePath()" 
+        [alt]="name()" />
         <span>
-            {{name}}
+            {{name()}}
         </span>
     </button>
 </div>
