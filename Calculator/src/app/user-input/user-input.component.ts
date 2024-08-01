@@ -24,10 +24,5 @@ export class UserInputComponent {
       expectedReturn: +this.enteredExpectedReturn(),
       annualInvestment: +this.enteredAnnualInvestment(),
     });
-console.log("Submitted!");
-console.log("enteredInitialInvestment!", this.enteredInitialInvestment)
-console.log("enteredAnnualInvestment!", this.enteredAnnualInvestment)
-console.log("enteredExpectedReturn!", this.enteredExpectedReturn)
-console.log("enteredDuration!", this.enteredDuration)
   }
 }

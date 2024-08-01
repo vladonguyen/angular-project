@@ -11,7 +11,9 @@ import { InvestmentService } from '../investment.service';
 })
 export class InvestementResultComponent {
   // alternative to constructor injection
-private investmentService = inject(InvestmentService);
+// private investmentService = inject(InvestmentService);
+constructor(private investmentService: InvestmentService){ }
+
 
 get results(){
   return this.investmentService.resultData;
