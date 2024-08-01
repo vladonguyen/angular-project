@@ -11,6 +11,7 @@ form {
     display: flex;
     justify-content: space-evenly;
     gap: 1.5rem;
+    padding-bottom: 1rem;
   }
   
   label {
@@ -34,7 +35,7 @@ form {
   
   button {
     width: 100%;
-    margin-top: 1.6rem;
+    margin-top: 0.5rem;
     padding: 0.5rem;
     border: 1px solid #76c0ae;
     border-radius: 0.25rem;
