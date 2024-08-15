@@ -37,7 +37,7 @@ export class PlacesService {
   addPlaceToUserPlaces(place: Place) {
     const prevPlaces = this.userPlaces();
 
-    if (prevPlaces.some((p) => p.id === place.id)) {
+    if (!prevPlaces.some((p) => p.id === place.id)) {
       this.userPlaces.set([...prevPlaces, place]);
     }
 
@@ -49,12 +49,27 @@ export class PlacesService {
       catchError(error => {
         this.userPlaces.set(prevPlaces);
         this.errorService.showError('Failed to store selected place.')
-        return throwError(() => 'Failed to store selected place.')
+        return throwError(() => new Error ('Failed to store selected place.'))
       })
     )
   }
 
-  removeUserPlace(place: Place) { }
+  removeUserPlace(place: Place) {
+    const prevPlaces = this.userPlaces();
+
+    if (prevPlaces.some((p) => p.id === place.id)) {
+      this.userPlaces.set(prevPlaces.filter(p => p.id !== place.id));
+    }
+
+    return this.httpClient.delete(`http://localhost:3000/user-places/${place.id}`).pipe(
+      catchError(error => {
+        this.userPlaces.set(prevPlaces);
+        this.errorService.showError('Failed to delete selected place.')
+        return throwError(
+          () => new Error ('Failed to store delete place.'))
+      })
+    )
+   }
 
   private fetchPlaces(url: string, errorMessage: string) {
     return this.httpClient
