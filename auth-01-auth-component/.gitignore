@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Ignore the environment.ts file (but not environment.prod.ts)
+ /src/environments/environment.ts
