@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Inject } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
 interface AuthResponseData {
@@ -11,7 +11,7 @@ interface AuthResponseData {
 }
 
 
-@Inject({ provideIn: 'root' })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
     constructor(private http: HttpClient) { }
 
