@@ -4,12 +4,13 @@ import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
-interface AuthResponseData {
-    idToken: string,
-    email: string,
-    refreshToken: string,
-    expiresIn: string,
-    localId: string,
+export interface AuthResponseData {
+    idToken: string;
+    email: string;
+    refreshToken: string;
+    expiresIn: string;
+    localId: string;
+    registered?: boolean;
 }
 
 
@@ -38,6 +39,17 @@ export class AuthService {
             }
             return throwError(errorMessage);
         }))
+    }
+
+    login(email: string, password: string){
+   return this.http.post<AuthResponseData>(
+            `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseApiKey}`,
+            {
+                email,
+                password,
+                returnSecureToken: true
+            }
+        )
     }
 
 }
