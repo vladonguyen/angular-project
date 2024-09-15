@@ -27,6 +27,10 @@ ngOnInit() {
     this.dataStorageService.storeRecipes();
   }
 
+  onLogout(){
+    this.authService.logout();
+  }
+
   onFetchData() {
     this.dataStorageService.fetchRecipes().subscribe();
   }
